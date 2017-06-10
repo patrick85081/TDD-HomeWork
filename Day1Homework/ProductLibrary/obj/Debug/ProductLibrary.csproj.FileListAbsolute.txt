@@ -1,0 +1,5 @@
+c:\users\user\documents\visual studio 2017\Projects\Day1Homework\ProductLibrary\bin\Debug\ProductLibrary.dll
+c:\users\user\documents\visual studio 2017\Projects\Day1Homework\ProductLibrary\bin\Debug\ProductLibrary.pdb
+c:\users\user\documents\visual studio 2017\Projects\Day1Homework\ProductLibrary\obj\Debug\ProductLibrary.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2017\Projects\Day1Homework\ProductLibrary\obj\Debug\ProductLibrary.dll
+c:\users\user\documents\visual studio 2017\Projects\Day1Homework\ProductLibrary\obj\Debug\ProductLibrary.pdb
