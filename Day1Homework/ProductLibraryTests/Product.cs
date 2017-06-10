@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductLibrary
+namespace ProductLibraryTests
 {
     /// <summary>
     /// 產品資料模型
@@ -14,8 +16,8 @@ namespace ProductLibrary
         public int Revenue { get; set; }
         public int SellPrice { get; set; }
 
-        public long Long { get; set; }
-        public double Double { get; set; }
-        public System.DateTime CreateTime { get; set;}
+        //public long Long { get; set; }
+        //public double Double { get; set; }
+        public System.DateTime CreateTime { get; set; }
     }
 }

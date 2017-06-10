@@ -70,17 +70,13 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="DataContextTests.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="EnumerableExTests.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProductLibrary\ProductLibrary.csproj">
-      <Project>{F05DC4CB-9A34-4793-91D6-CBF75DA05FF1}</Project>
-      <Name>ProductLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -25,3 +25,27 @@ c:\users\user\documents\visual studio 2017\Projects\Day1Homework\ProductLibraryT
 c:\users\user\documents\visual studio 2017\Projects\Day1Homework\ProductLibraryTests\bin\Debug\FluentAssertions.xml
 c:\users\user\documents\visual studio 2017\Projects\Day1Homework\ProductLibraryTests\bin\Debug\FluentAssertions.Core.pdb
 c:\users\user\documents\visual studio 2017\Projects\Day1Homework\ProductLibraryTests\bin\Debug\FluentAssertions.Core.xml
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\zh-Hant\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\zh-Hant\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\ProductLibraryTests.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\ProductLibraryTests.pdb
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\ExpectedObjects.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\FluentAssertions.Core.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\FluentAssertions.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\NSubstitute.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\FluentAssertions.pdb
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\FluentAssertions.xml
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\FluentAssertions.Core.pdb
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\FluentAssertions.Core.xml
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\NSubstitute.xml
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\obj\Debug\ProductLibraryTests.csprojResolveAssemblyReference.cache
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\obj\Debug\ProductLibraryTests.dll
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\obj\Debug\ProductLibraryTests.pdb

@@ -2,36 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ProductLibrary
+namespace ProductLibraryTests
 {
-    public class DataContext
+    public static class EnumerableExtensions
     {
-        /// <summary>
-        /// 資料來源
-        /// </summary>
-        IDataSource _productSource = null;
-
-        public DataContext()
-        {
-            _productSource = new DataSource();
-        }
-
-        public DataContext(IDataSource source)
-        {
-            _productSource = source;
-        }
-
         /// <summary>
         /// 計算連續群組 資料欄位加總
         /// </summary>
-        /// <typeparam name="T">需要加總的型別，限定數值型別，實際計算會轉型為<see cref="int"/></typeparam>
+        /// <typeparam name="TSource">來源型別</typeparam>
+        /// <typeparam name="TProperty">需要加總的型別，限定數值型別，實際計算會轉型為<see cref="int"/></typeparam>
+        /// <param name="dataSource">加總來源物件</param>
         /// <param name="seqGroupCount">連續的數目</param>
         /// <param name="sumProperty">加總的資料欄位</param>
-        /// <returns></returns>
-        public int[] ClcSeqGroupSum<T>(
+        /// <returns>加總群組</returns>
+        public static int[] ClcSeqGroupSum<TSource, TProperty>(
+            this IEnumerable<TSource> dataSource, 
             int seqGroupCount,
-            Expression<Func<Product, T>> sumProperty) where T : struct
+            Expression<Func<TSource, TProperty>> sumProperty)
+                where TSource : class
+                where TProperty : struct
         {
             if (sumProperty == null)
                 throw new ArgumentNullException(
@@ -50,38 +42,44 @@ namespace ProductLibrary
                 converterProperty = Expression.Convert(
                     sumProperty.Body, typeof(int));
             }
-            catch (InvalidCastException ex)
+            catch (Exception ex)
             {
                 throw new ArgumentException(
                     $"{nameof(sumProperty)} is not support calculation.", ex);
             }
-            var converProperty = Expression.Lambda<Func<Product, int>>(
+            var converProperty = Expression.Lambda<Func<TSource, int>>(
                 converterProperty, sumProperty.Parameters);
-            //Func<Product, int> test = converProperty.Compile();
+            //Func<TSource, int> test = converProperty.Compile();
 
-            return ClcSeqGroupSum(seqGroupCount, converProperty);
+            return dataSource.ClcSeqGroupSum(seqGroupCount, converProperty);
         }
 
         /// <summary>
         /// 計算連續群組 資料欄位加總
         /// </summary>
+        /// <typeparam name="TSource">來源型別</typeparam>
+        /// <param name="dataSource">加總來源物件</param>
         /// <param name="seqGroupCount">連續的數目</param>
         /// <param name="sumProperty">加總的資料欄位</param>
-        /// <returns></returns>
-        public int[] ClcSeqGroupSum(
+        /// <returns>加總群組</returns>
+        public static int[] ClcSeqGroupSum<TSource>(
+            this IEnumerable<TSource> dataSource,
             int seqGroupCount,
-            Expression<Func<Product, int>> sumProperty)
+            Expression<Func<TSource, int>> sumProperty)
         {
-            if (seqGroupCount <= 0)
-                throw new ArgumentOutOfRangeException(
+            if (seqGroupCount < 0)
+                throw new ArgumentException(
                     $"{nameof(seqGroupCount)} must more than 0.");
+            else if (seqGroupCount == 0)
+                return new int[] { 0 };
+
 
             if (sumProperty == null)
                 throw new ArgumentNullException(
                     $"{nameof(sumProperty)} can`t be null.");
 
             /* 原本只有考慮int的屬性，只有檢查是否符合 (Product p) => p.Property
-             * 但老師的條件是 1.任何型別 2.結果型別可直接用int
+             * 但條件是 1.任何型別 2.結果型別可直接用int
              * 所以改成 也接受 (Product p) => (int)p.Property
              * 因為要做數值加總 限定Property為Value Type
              * 統一轉成int做計算
@@ -102,15 +100,13 @@ namespace ProductLibrary
                 throw new ArgumentException(
                     $"{nameof(sumProperty)} must be property.");
 
-            Func<Product, int> mSumProperty = sumProperty.Compile();
-            mSumProperty.Invoke(new Product());
-            IEnumerable<Product> data = _productSource.GetProducts();
+            Func<TSource, int> mSumProperty = sumProperty.Compile();
 
             int[] result = null;
 
-            result = data.Select((p, i) => new { Index = i, Product = p })
+            result = dataSource.Select((p, i) => new { Index = i, Item = p })
                 .GroupBy(item => item.Index / seqGroupCount)
-                .Select(group => group.Sum(item => mSumProperty.Invoke(item.Product)))
+                .Select(group => group.Sum(item => mSumProperty.Invoke(item.Item)))
                 .ToArray();
 
             return result;
