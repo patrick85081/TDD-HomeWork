@@ -48,3 +48,4 @@ D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\Microsof
 D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\bin\Debug\NSubstitute.xml
 D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\obj\Debug\ProductLibraryTests.dll
 D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\obj\Debug\ProductLibraryTests.pdb
+D:\TDD\Homework\TDD-HomeWork\Day1Homework\ProductLibraryTests\obj\Debug\ProductLibraryTests.csprojResolveAssemblyReference.cache

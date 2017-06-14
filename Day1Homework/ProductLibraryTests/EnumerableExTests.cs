@@ -20,16 +20,6 @@ namespace ProductLibrary.Tests
         [TestInitialize()]
         public void TestInitialize_測試資料初始化()
         {
-            //dataSource = Enumerable.Range(1, 11)
-            //    .Select(i =>
-            //        new Product
-            //        {
-            //            Id = i,
-            //            Cost = i,
-            //            Revenue = 10 + i,
-            //            SellPrice = 20 + i,
-            //        })
-            //    .ToList();
             dataSource = new List<Product>()
             {
                 new Product() { Id =  1, Cost =  1, Revenue = 11, SellPrice = 21 },
@@ -49,6 +39,7 @@ namespace ProductLibrary.Tests
         [TestMethod()]
         public void ClcSeqGroupSumTest_測試每3筆資料_加總Cost()
         {
+            //Arrange
             var expected = new int[] 
             {
                 1 + 2 + 3,
@@ -61,15 +52,18 @@ namespace ProductLibrary.Tests
             var groupCount = 3;
             Expression<Func<Product, int>> sumProperty = p => p.Cost;
 
+            //act
             var actual = dataSource.ClcSeqGroupSum(groupCount, sumProperty);
             Console.WriteLine($"Actual => {string.Join(",", actual.Select(n => $"{n}"))}");
 
+            //assert
             expected.ToExpectedObject().ShouldEqual(actual);
         }
 
         [TestMethod()]
         public void ClcSeqGroupSumTest_測試每4筆資料_加總Revenue()
         {
+            //Arrange
             var expected = new int[]
             {
                 11 + 12 + 13 + 14,
@@ -81,66 +75,68 @@ namespace ProductLibrary.Tests
             var groupCount = 4;
             Expression<Func<Product, int>> sumProperty = p => p.Revenue;
 
+            //act
             var actual = dataSource.ClcSeqGroupSum(groupCount, sumProperty);
             Console.WriteLine($"Actual => {string.Join(",", actual.Select(n => $"{n}"))}");
 
+            //assert
             expected.ToExpectedObject().ShouldEqual(actual);
         }
 
         [TestMethod]
         public void ClcSeqGroupSumTest_測試加總數目小於等於0_發生Exception()
         {
-            var expectec = new int[] { 0 };
-
+            //arrange
             var groupCount = 0;
             Expression<Func<Product, int>> sumProperty = p => p.SellPrice;
 
+            //act
             Action actual = () => dataSource.ClcSeqGroupSum(groupCount, sumProperty);
+
+            //assert
             actual.ShouldThrow<ArgumentException>();
         }
 
         [TestMethod]
         public void ClcSeqGroupSumTest_測試加總數目小於0()
         {
+            //Arrange
             var groupCount = -1;
             Expression<Func<Product, int>> sumProperty = p => p.SellPrice;
 
+            //act
             Action action = () => dataSource.ClcSeqGroupSum(groupCount, sumProperty);
 
+            //assert
             action.ShouldThrow<ArgumentException>();
         }
 
         [TestMethod]
         public void ClcSeqGroupSumTest_測試加總屬性為null()
         {
+            //arrange
             var groupCount = 3;
             Expression<Func<Product, int>> sumProperty = null;
 
+            //act
             Action action = () => dataSource.ClcSeqGroupSum(groupCount, sumProperty);
 
+            //assert
             action.ShouldThrow<ArgumentNullException>();
         }
 
         [TestMethod]
         public void ClcSeqGroupSumTest_測試加總屬性並非為Product屬性()
         {
+            //arrange
             var groupCount = 3;
             Expression<Func<Product, int>> sumProperty = p => 2;
 
+            //act
             Action action = () => dataSource.ClcSeqGroupSum(groupCount, sumProperty);
 
+            //assert
             action.ShouldThrow<ArgumentException>();
         }
-        /*
-        [TestMethod]
-        public void ClcSeqGroupSumTest_測試不支援加總類型的屬性DateTime()
-        {
-            var groupCount = 3;
-            Expression<Func<Product, DateTime>> sumProperty = p => p.CreateTime;
-
-            Action clc = () => dataSource.ClcSeqGroupSum(groupCount, sumProperty);
-
-            clc.ShouldThrow<ArgumentException>();
-        }*/
     }
 }
