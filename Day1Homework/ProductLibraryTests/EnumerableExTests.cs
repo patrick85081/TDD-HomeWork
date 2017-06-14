@@ -88,16 +88,15 @@ namespace ProductLibrary.Tests
         }
 
         [TestMethod]
-        public void ClcSeqGroupSumTest_測試加總數目等於0()
+        public void ClcSeqGroupSumTest_測試加總數目小於等於0_發生Exception()
         {
             var expectec = new int[] { 0 };
 
             var groupCount = 0;
             Expression<Func<Product, int>> sumProperty = p => p.SellPrice;
 
-            var actual = dataSource.ClcSeqGroupSum(groupCount, sumProperty);
-
-            expectec.ToExpectedObject().ShouldEqual(actual);
+            Action actual = () => dataSource.ClcSeqGroupSum(groupCount, sumProperty);
+            actual.ShouldThrow<ArgumentException>();
         }
 
         [TestMethod]
@@ -132,7 +131,7 @@ namespace ProductLibrary.Tests
 
             action.ShouldThrow<ArgumentException>();
         }
-
+        /*
         [TestMethod]
         public void ClcSeqGroupSumTest_測試不支援加總類型的屬性DateTime()
         {
@@ -142,6 +141,6 @@ namespace ProductLibrary.Tests
             Action clc = () => dataSource.ClcSeqGroupSum(groupCount, sumProperty);
 
             clc.ShouldThrow<ArgumentException>();
-        }
+        }*/
     }
 }
