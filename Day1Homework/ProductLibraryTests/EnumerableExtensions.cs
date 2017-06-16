@@ -13,18 +13,18 @@ namespace ProductLibraryTests
         /// 計算連續群組 資料欄位加總
         /// </summary>
         /// <typeparam name="TSource">來源型別</typeparam>
-        /// <param name="dataSource">加總來源物件</param>
-        /// <param name="seqGroupCount">連續的數目</param>
+        /// <param name="source">加總來源物件</param>
+        /// <param name="groupCount">連續的數目</param>
         /// <param name="sumProperty">加總的資料欄位</param>
         /// <returns>加總群組</returns>
-        public static int[] ClcSeqGroupSum<TSource>(
-            this IEnumerable<TSource> dataSource,
-            int seqGroupCount,
+        public static int[] GetGroupSum<TSource>(
+            this IEnumerable<TSource> source,
+            int groupCount,
             Expression<Func<TSource, int>> sumProperty)
         {
-            if (seqGroupCount <= 0)
+            if (groupCount <= 0)
                 throw new ArgumentException(
-                    $"{nameof(seqGroupCount)} must more than 0.");
+                    $"{nameof(groupCount)} must more than 0.");
 
 
             if (sumProperty == null)
@@ -47,9 +47,9 @@ namespace ProductLibraryTests
 
             int[] result = null;
 
-            result = dataSource.Select((p, i) => new { Index = i, Item = p })
-                .GroupBy(item => item.Index / seqGroupCount)
-                .Select(group => group.Sum(item => mSumProperty.Invoke(item.Item)))
+            result = source.Select((p, i) => new { Index = i, Item = p })
+                .GroupBy(item => item.Index / groupCount)
+                .Select(group => group.Select(g => g.Item).Sum(mSumProperty))
                 .ToArray();
 
             return result;
